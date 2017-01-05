@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html >
+	<head >
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--including all the files required css-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Assets/Font Awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="Assets/Font Awesome/css/font-awesome.min.css">
+		<link href="CSS/libraryFiles/jquery-ui.min.css" rel="stylesheet">
+		<!--including CSS file -->
+		<!--<link rel="stylesheet" href="CSS/paymentMode.css">-->
+
+	</head>
+
+	<!--ngApp declared-->
+  <body ng-app="paymentMode">
+    <div class="container-fluid" ng-controller="modalCtrl">
+        <!--view display-->
+        <!--<ui-view></ui-view>-->
+        <div class="container-fluid" id="table">
+					<!-- outer table -->
+					<!-- table heading -->
+					<div class=" col-md-12 col-lg-12">
+						<div class=" col-md-12 col-lg-12 header-div" >
+						<div class="col-md-3 col-lg-2"></div>
+						<div class="col-md-3 col-lg-2 ">Frequency Type</div>
+						<div class="col-md-2 col-lg-2">Start Date</div>
+						<div class="col-md-2 col-lg-2 ">End Date</div>
+						<div class="col-md-2 col-lg-2"  >Total Cash with Tax</div>
+						<div class="col-md-2 col-lg-2">Actions</div>
+					</div>
+					<button type="button" class="btn btn-success btn-lg col-md-12 col-lg-12 footer-div" data-toggle="modal" data-target="#gridSystemModal">
+						+Add
+					</button>
+					</div>
+					<!-- table data -->
+				</div>
+				<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true" >
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+								<ng-include src="'Templates/modal.html'"></ng-include>
+						</div>
+					</div>
+				</div>
+
+		
+			</div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+		<!--Including all Librrary Files-->
+		<script src="JS/libraryFiles/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+		<script src="JS/libraryFiles/jquery-ui.min.js"></script>
+		<!--including module-->
+		<script src="JS//Module/paymentMode.js"></script>
+
+		<!--Rendering routingJS-->
+		<!--<script src="JS/Routing/routing.js"></script>-->
+
+		<!--Rendering all controllers-->
+		<script src="JS/Controllers/paymentCtrl.js"></script>
+		<script src="JS/Controllers/accountingCtrl.js"></script>
+		<script src="JS/Controllers/frequencyCtrl.js"></script>
+		<script src="JS/Controllers/paymentTimingCtrl.js"></script>
+		<script src="JS/Controllers/paymentdueonCtrl.js"></script>
+		<script src="JS/Controllers/paymentduedayCtrl.js"></script>
+		<script src="JS/Controllers/modalCtrl.js"></script>
+		<script src="JS/Controllers/growthCtrl.js"></script>
+		<script src="JS/Controllers/changeAmountCtrl.js"></script>
+
+
+
+		<!--service calls-->
+		<script src="JS/Services/ajaxCallService.js"></script>
+
+		<!--directives included-->
+		<!--<script src="JS/Directives/collapsebuttondirective.js"></script>
+		<script src="JS/Directives/itemsdirective.js"></script>
+		<script src="JS/Directives/logobardirective.js"></script>
+		<script src="JS/Directives/revenueInfodirective.js"></script>
+		<script src="JS/Directives/revenueRepresentationdirective.js"></script>
+		<script src="JS/Directives/tableDirective.js"></script>
+		<script src="JS/Directives/sidenavDirective.js"></script>-->
+  </body>
+</html>
