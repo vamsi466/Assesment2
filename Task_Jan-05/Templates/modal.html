@@ -1,4 +1,3 @@
-<div>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="gridModalLabel">Payment Information</h4>
@@ -9,12 +8,12 @@
             <div class="form-group col-lg-6" ng-controller="paymentCtrl">
                 <label for="exampleSelect1">Payment Type</label>
                 <div class="main-input">
-                    <span><input class="form-control input-field" type="text" placeholder="select" ng-model="paymentdetails.selectedpaymentData"></span>
+                    <span><input class="form-control input-field" type="text" placeholder="select" ng-model="paymentdetails.selectedpaymentData" ></span>
                     <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                        <input type="text" placeholder="select" >
-                        <div ng-repeat="data in selectedData | filter:data track by $index" ng-click=paymentSelected(data)>
+                        <input type="text" placeholder="select" ng-model="payment" >
+                        <div ng-repeat="data in selectedData | filter:payment track by $index" ng-click='paymentdetails.selectedpaymentData = data'>
                             <li>{{data}}</li>
                         </div>
                     </div>
@@ -28,8 +27,8 @@
                     <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                        <input type="text" placeholder="select" >
-                        <div ng-repeat="data in accountingData | filter:data.value track by $index" ng-click=accountingSelected(data.value)>
+                        <input type="text" placeholder="select" ng-model="accounting" >
+                        <div ng-repeat="data in accountingData | filter:accounting track by $index" ng-click=accountingSelected(data.value)>
                             <li>{{data.value}}</li>
                         </div>
                     </div>
@@ -39,12 +38,12 @@
             <div class="form-group col-lg-4" ng-controller="frequencyCtrl">
                 <label for="exampleSelect1">Frequency</label>
                 <div class="main-input">
-                    <span><input class="form-control input-field" type="text" placeholder="select"  ng-model="paymentdetails.selectedfrequencyData"></span>
+                    <span><input class="form-control input-field" type="text" placeholder="select"  ng-model="paymentdetails.selectedfrequencyData" ng-change="conditions()"></span>
                     <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                        <input type="text" placeholder="select" ng-model="test">
-                        <div ng-repeat="data in selectedDataFrequency | filter:data track by $index" ng-click=frequencySelected(data)>
+                        <input type="text" placeholder="select" ng-model="frequency">
+                        <div ng-repeat="data in selectedDataFrequency | filter:frequency track by $index" ng-click=frequencySelected(data)>
                             <li>{{data}}</li>
                         </div>
                     </div>
@@ -54,9 +53,10 @@
             <div class="form-group col-lg-4">
                 <label for="exampleInputPassword1">Period Start Date</label>
                 <input class="form-control " type="date" name="datepicker" ng-model="paymentdetails.date" placeholder="mm/dd/yy">
-                <!--<span class="glyphicon glyphicon-calendar calender-icon"></span>-->
+                <span class="glyphicon glyphicon-calendar calender-icon"></span>
             </div>
-{{paymentdetails.date}}
+
+            
             <div class="form-group col-lg-4" ng-controller="paymentTimingCtrl">
                 <label for="exampleSelect1">Payment Timing</label>
                 <div class="main-input">
@@ -64,8 +64,8 @@
                     <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                        <input type="text" placeholder="select" ng-model="test">
-                        <div ng-repeat="data in paymentTiming | filter:data.value track by $index" ng-click=paymenttimingSelected(data.value)>
+                        <input type="text" placeholder="select" ng-model="paymentTimiing">
+                        <div ng-repeat="data in paymentTiming | filter:paymentTimiing track by $index" ng-click=paymenttimingSelected(data.value)>
                             <li>{{data.value}}</li>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
                     <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                        <input type="text" placeholder="select" ng-model="test">
-                        <div ng-repeat="data in paymentdueonData| filter:data.value track by $index" ng-click=paymentdueonSelected(data.value)>
+                        <input type="text" placeholder="select" ng-model="paymentdueon">
+                        <div ng-repeat="data in paymentdueonData| filter:paymentdueon track by $index" ng-click=paymentdueonSelected(data.value)>
                         <li>{{data.value}}</li>
                         </div>
                     </div>
@@ -90,20 +90,20 @@
 
 
 
-            <!--<div class="form-group col-lg-4" ng-controller="paymentduedayCtrl">
+            <div ng-if="paydueday" class="form-group col-lg-4" ng-controller="paymentduedayCtrl">
                 <label for="exampleSelect1">Payment Due Day</label>
                 <div class="main-input">
-                    <span><input class="form-control input-field" type="text" placeholder="select"></span>
+                    <span><input class="form-control input-field" type="text" placeholder="select" ng-model="paymentdetails.selectedpaymentduedayData"></span>
                     <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                        <input type="text" placeholder="select" ng-model="test">
-                        <div  ng-repeat="data in paymentduedayData">
+                        <input type="text" placeholder="select" ng-model="paydueday">
+                        <div  ng-repeat="data in paymentduedayData |  filter:paydueday track by $index"  ng-click=paymentduedaySelected(data.value)>
                             <li>{{data.value}}</li>
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
 
             <div class="form-group col-lg-4" ng-model="paymentdetails.accountingcost">
@@ -135,8 +135,8 @@
                     <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                        <input type="text" placeholder="select">
-                        <div ng-repeat="data in growthData | filter:data.value track by $index" ng-click=growthSelected(data.value)>
+                        <input type="text" placeholder="select" ng-model="growth">
+                        <div ng-repeat="data in growthData | filter:growth track by $index" ng-click=growthSelected(data.value)>
                             <li>{{data.value}}</li>
                         </div>
                     </div>
@@ -167,8 +167,8 @@
                         <button class="btn btn-secondary fa fa-angle-down icon-span" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         </button>
                         <div class="dropdown-menu list-dropdown" style="overflow-y:scroll;height:150px">
-                            <input type="text" placeholder="select">
-                            <div ng-repeat="data in changeAmountData | filter:data.value track by $index" ng-click=changeAmountSlected(data.value)>
+                            <input type="text" placeholder="select" ng-model="charge">
+                            <div ng-repeat="data in changeAmountData | filter:charge track by $index" ng-click=changeAmountSlected(data.value)>
                                 <li>{{data.value}}</li>
                             </div>
                         </div>
@@ -200,13 +200,15 @@
         <div>Parameters</div>
     </div>
     <div class="col-lg-offset-10 pull right" ng-show="footer1">
-        <button type="button" class=" col-lg-8 btn btn-secondary" data-dismiss="modal">Save</i></button>
-        <button type="button" class=" col-lg-2  btn btn-secondary" ng-click="next()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        <button type="button" class=" col-lg-8 btn btn-secondary" ng-if="savebutton" ng-click= "savethisPage()" >Save</i></button>
+        <button type="button" class=" col-lg-2  btn btn-secondary" ng-if="next" ng-click="next()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        <button type="button" class=" col-lg-2  btn btn-secondary pull-right"ng-if="loseChange" ng-click="editconfirm();"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
     </div>
 
     <div class="col-lg-offset-8 pull righ" ng-show="footer2">
         <button type="button" class=" col-lg-2  btn btn-secondary" ng-click="previous()"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-        <button type="button" class=" col-lg-8 btn btn-secondary"data-dismiss="modal" ng-click="addDetails(paymentdetails)">Generate</i></button> 
+        <button type="button" class=" col-lg-8 btn btn-secondary"data-dismiss="modal"ng-if="generateMe" ng-click="addDetails(paymentdetails)">Generate</i></button> 
+        <button type="button" class=" col-lg-8 btn btn-secondary"data-dismiss="modal" ng-if="finalSave" ng-click="saveEdited()">Save</i></button> 
     </div>
 </div>
 </div>

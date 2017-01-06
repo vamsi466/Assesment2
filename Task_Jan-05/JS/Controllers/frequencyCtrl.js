@@ -22,6 +22,16 @@
           
         }
 
+        // $scope.conditions = function(){
+        //    var paydueday = true;
+        //     console.log("hai")
+        //     if($scope.paymentdetails.selectedfrequencyData == "Other"){
+                
+               
+        //         $rootScope.$broadcast("paydue",{dueday : paydueday});
+        //     }
+        // }
+
          
 
     }])
